@@ -1,6 +1,6 @@
-import mongoose, { Mongoose } from "mongoose";
+import mongoose from "mongoose";
 
-const BookSchema = new Mongoose.Schema({
+const BookSchema = new mongoose.Schema({
     bookname:{
         type: String,
         required: true
@@ -17,16 +17,28 @@ const BookSchema = new Mongoose.Schema({
         type: String,
         required: true
     },
+    pages:{
+        type: Number,
+        required: true
+    },
     points:{
         type: Number,
         required: true
     },
-    coverpage:{
+    language:{
+        type: String,
+        required: true
+    },
+    coverBack: {
+        type: String,
+        required: true
+    },
+    coverpageImg:{
         type: String,
         required: true
     },
     owner:{
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         required: true
     },
     status:{
@@ -34,11 +46,22 @@ const BookSchema = new Mongoose.Schema({
         required: true
     },
     passes:{
-        type: String,
+        type: Number,
         required: true
+    },
+    genre: [{
+        type: Number,
+        required: true
+    }],
+    review: {
+        type: Number,
+        require: true
     },
     description:{
         type: String,
         required: true
     },
 });
+
+const BookModel= mongoose.model("books",BookSchema);
+export default BookModel;

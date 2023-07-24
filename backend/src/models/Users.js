@@ -19,31 +19,40 @@ const UserSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  location: {
-    city: {
-      type: String,
-      required: true,
-    },
-    pincode: {
-      type: Number,
-      required: true,
-    },
-  },
+  // location: {
+  //   city: {
+  //     type: String,
+  //     required: true,
+  //   },
+  //   pincode: {
+  //     type: Number,
+  //     required: true,
+  //   },
+  // },
   points: {
     type: Number,
     required: true,
   },
-  givenBooks: 
-    [
-        {
+  givenBooks: [
+    {
+      book: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "books"
-        }
-    ],
-    receivedBooks:[
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "books"
-        }
-    ]
+        ref: "books",
+      }
+    }
+  ],
+  receivedBooks: [
+    {
+      book: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "books",
+      },
+      status: {
+        type: Number,
+      },
+    },
+  ],
 });
+
+const UserModel = mongoose.model("users", UserSchema);
+export default UserModel;
