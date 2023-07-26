@@ -1,15 +1,10 @@
-const urls= {
-    HOME: '/',
-    LOGIN: '/login',
-    DASHBOARD: '/dashboard',
-    PROFILE: '/profile'
-}
-
 const routes={
-    HOME: urls.HOME,
-    LOGIN: urls.LOGIN,
-    DASHBOARD: urls.DASHBOARD,
-    PROFILE: urls.PROFILE
+    LOGIN: '/',
+    DASHBOARD: '/dashboard',
+    GIVEBOOK: '/givebook',
+    GIVENBOOKS: '/givenbooks',
+    ALLBOOKS: '/allbooks',
+    PROFILE: '/profile'
 }
 
 export default routes;

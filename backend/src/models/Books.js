@@ -21,10 +21,6 @@ const BookSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    points:{
-        type: Number,
-        required: true
-    },
     language:{
         type: String,
         required: true

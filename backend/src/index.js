@@ -10,7 +10,7 @@ dotenv.config();
 app.use(express.json());
 app.use(cors());
 app.use('/auth',userRouter);
-app.use('book', bookRouter);
+app.use('/book', bookRouter);
 
 mongoose.connect(`mongodb+srv://adithyag1:${process.env.MONGODB_PASSWORD}@bookmybook.dvtt2hr.mongodb.net/?retryWrites=true&w=majority`)
 .then(()=>{

@@ -1,12 +1,12 @@
 import React from 'react'
-import FirstComponent from '../component/FirstComponent'
+import NavBar from '../components/NavBar';
 
 function Dashboard() {
+  const user= JSON.parse(localStorage.getItem("currentuser"));
   return (
     <>
-    <FirstComponent/>
-    <FirstComponent/>
-    <FirstComponent/>
+      <NavBar />
+      Hello {user?.name} !
     </>
   )
 }

@@ -5,7 +5,6 @@ import bcrypt from 'bcrypt';
 const router= Router();
 
 router.post('/register', async(req, res)=>{
-    // const {username,name, password, email,points}= req.body;
     const {username, name, password, email, points}= req.body;
     try{
        const user= await UserModel.findOne({username});
@@ -14,9 +13,8 @@ router.post('/register', async(req, res)=>{
         return res.json({message: 'User already exists!'});
        }
        else{
-
         const hashedPassword= await bcrypt.hash(password,10);
-        const newUser= new UserModel({username, password: hashedPassword, name, email, points});
+        const newUser= new UserModel({username, name, password: hashedPassword, email, points});
         await newUser.save();
         res.json({message:' saved successfully!'});
        }
@@ -36,7 +34,7 @@ router.post('/login', async(req, res)=>{
        {
             const passwordMatch= await bcrypt.compare(password, user.password)
             if(passwordMatch){
-                res.json({status:1, user: user});
+                res.json({status:1, user: user });
             }
             else{
                 res.json({status:0, message:' password wrong!'})
@@ -51,6 +49,5 @@ router.post('/login', async(req, res)=>{
         res.json({message: err});
     }
 });
-
 
 export {router as userRouter};
