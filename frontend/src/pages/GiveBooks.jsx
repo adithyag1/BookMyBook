@@ -1,26 +1,26 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
-import genres from "../config/genres";
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import genres from '../config/genres';
 import {useNavigate} from 'react-router-dom'
 import routes from '../config/routes.js'
 
 function GiveBooks() {
-  const [bookname, setBookname] = useState("");
-  const [author, setAuthor] = useState("");
-  const [publisher, setPublisher] = useState("");
-  const [edition, setEdition] = useState("");
-  const [pages, setPages] = useState("");
-  const [language, setLanguage] = useState("");
-  const [coverBack, setCoverBack] = useState("");
-  const [coverpageImg, setCoverpageImg] = useState("");
-  const [owner, setOwner] = useState("");
+  const [bookname, setBookname] = useState('');
+  const [author, setAuthor] = useState('');
+  const [publisher, setPublisher] = useState('');
+  const [edition, setEdition] = useState('');
+  const [pages, setPages] = useState(0);
+  const [language, setLanguage] = useState('');
+  const [coverBack, setCoverBack] = useState('');
+  const [coverpageImg, setCoverpageImg] = useState('');
+  const [owner, setOwner] = useState('');
   const [genre, setGenre] = useState([]);
-  const [review, setReview] = useState("");
-  const [description, setDescription] = useState("");
-  const naviagte= useNavigate();
+  const [review, setReview] = useState('');
+  const [description, setDescription] = useState('');
+  const navigate= useNavigate();
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("currentuser"));
+    const user = JSON.parse(localStorage.getItem('currentuser'));
     setOwner(user._id);
   }, []);
 
@@ -52,14 +52,14 @@ function GiveBooks() {
       owner,
     };
     const response = await axios.post(
-      "http://localhost:3001/book/givebook",
+      'http://localhost:3001/book/givebook',
       newBook
     );
-    console.log("response", response.data.status);
+    console.log('response', response.data.status);
 
     if(response.data.status ===1){
       alert('Succesfully posted!')
-      naviagte(routes.GIVENBOOKS);
+      navigate(routes.GIVENBOOKS);
     }
     else{
       alert('Failed to post your book :(')
@@ -69,59 +69,59 @@ function GiveBooks() {
     <>
       <form>
         <input
-          type="text"
-          name="bookname"
+          type='text'
+          name='bookname'
           required
-          placeholder="bookname"
+          placeholder='bookname'
           onChange={(e) => setBookname(e.target.value)}
         />
         <input
-          type="text"
-          name="author"
+          type='text'
+          name='author'
           required
-          placeholder="author"
+          placeholder='author'
           onChange={(e) => setAuthor(e.target.value)}
         />
         <input
-          type="text"
-          name="publisher"
+          type='text'
+          name='publisher'
           required
-          placeholder="publisher"
+          placeholder='publisher'
           onChange={(e) => setPublisher(e.target.value)}
         />
         <input
-          type="text"
-          name="edition"
+          type='text'
+          name='edition'
           required
-          placeholder="edition"
+          placeholder='edition'
           onChange={(e) => setEdition(e.target.value)}
         />
         <input
-          type="number"
-          name="pages"
+          type='number'
+          name='pages'
           required
-          placeholder="pages"
+          placeholder='pages'
           onChange={(e) => setPages(e.target.value)}
         />
         <input
-          type="text"
-          name="language"
+          type='text'
+          name='language'
           required
-          placeholder="language"
+          placeholder='language'
           onChange={(e) => setLanguage(e.target.value)}
         />
         <input
-          type="text"
-          name="coverBack"
+          type='text'
+          name='coverBack'
           required
-          placeholder="coverBack"
+          placeholder='coverBack'
           onChange={(e) => setCoverBack(e.target.value)}
         />
         <input
-          type="text"
-          name="coverpageImg"
+          type='text'
+          name='coverpageImg'
           required
-          placeholder="coverpageImg"
+          placeholder='coverpageImg'
           onChange={(e) => setCoverpageImg(e.target.value)}
         />
         <label>
@@ -129,7 +129,7 @@ function GiveBooks() {
           {Object.entries(genres).map(([genreValue, genreLabel]) => (
             <div key={genreValue}>
               <input
-                type="checkbox"
+                type='checkbox'
                 onChange={handleCheckboxChange}
                 value={genreValue}
               />
@@ -138,20 +138,20 @@ function GiveBooks() {
           ))}
         </label>
         <input
-          type="text"
-          name="review"
+          type='text'
+          name='review'
           required
-          placeholder="review"
+          placeholder='review'
           onChange={(e) => setReview(e.target.value)}
         />
         <input
-          type="text"
-          name="description"
+          type='text'
+          name='description'
           required
-          placeholder="description"
+          placeholder='description'
           onChange={(e) => setDescription(e.target.value)}
         />
-        <input type="submit" onClick={(e) => handleSubmit(e)} />
+        <input type='submit' onClick={(e) => handleSubmit(e)} />
       </form>
     </>
   );

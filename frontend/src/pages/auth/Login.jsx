@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import routes from '../../config/routes';
 
 function Login() {
@@ -15,7 +15,7 @@ function Login() {
             alert('Wrong password!');
         }
         else if(response.data.status===1){
-            localStorage.setItem("currentuser",JSON.stringify(response.data.user));
+            localStorage.setItem("currentuser",JSON.stringify(await response.data.user));
             console.log(response.data.user);
             navigate(routes.DASHBOARD);
         }
@@ -27,8 +27,9 @@ function Login() {
     <div>
         <h1>Login</h1>
         <input type='text' placeholder='username' onChange={(e)=>{setUsername(e.target.value)}}/>
-        <input type='text' placeholder='password' onChange={(e)=>{setPassword(e.target.value)}}/>
+        <input type='password' placeholder='password' onChange={(e)=>{setPassword(e.target.value)}}/>
         <button onClick={handleLogin}>Login</button>
+        <div>New User?<Link to={routes.REGISTER}> Register</Link></div>
     </div>
   )
 }

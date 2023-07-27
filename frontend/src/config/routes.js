@@ -4,7 +4,9 @@ const routes={
     GIVEBOOK: '/givebook',
     GIVENBOOKS: '/givenbooks',
     ALLBOOKS: '/allbooks',
-    PROFILE: '/profile'
+    PROFILE: '/profile',
+    LOGOUT: '/logout',
+    REGISTER: '/register'
 }
 
 export default routes;

@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+import routes from '../config/routes';
 
 function Profile() {
     const user=JSON.parse(localStorage.getItem("currentuser"));
@@ -9,6 +11,7 @@ function Profile() {
         <div>🪙</div>
         <div>{user.points}</div>
         <div>Given {user.givenBooks.length} books</div>
+        <div><Link to={routes.GIVENBOOKS}>GivenBooks</Link></div>
         <div>Received {user.receivedBooks.length} books</div>
     </div>
   )
