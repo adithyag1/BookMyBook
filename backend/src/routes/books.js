@@ -42,17 +42,17 @@ router.post('/mygivenbooks', async(req, res)=>{
         res.json({status: 0, message: 'no books given yet!'});
     }
 })
-router.post('/getsinglebook',async(req,res)=>{
-    const {bookId}= req.body;
-    const book= await BookModel.findById(bookId);
-    if(book){
-        res.json({status:1, book: book});
-    }
-    else
-    {
-        res.json({status: 0, message: 'no book found!'});
-    }
-})
+// router.post('/getsinglebook',async(req,res)=>{
+//     const {bookId}= req.body;
+//     const book= await BookModel.findById(bookId);
+//     if(book){
+//         res.json({status:1, book: book});
+//     }
+//     else
+//     {
+//         res.json({status: 0, message: 'no book found!'});
+//     }
+// })
 
 
 export {router as bookRouter};
