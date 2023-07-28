@@ -6,7 +6,8 @@ const routes={
     ALLBOOKS: '/allbooks',
     PROFILE: '/profile',
     LOGOUT: '/logout',
-    REGISTER: '/register'
+    REGISTER: '/register',
+    GETBOOK: '/getbook'
 }
 
 export default routes;

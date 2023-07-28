@@ -8,6 +8,7 @@ import Profile from './pages/Profile';
 import GivenBooks from './pages/GivenBooks';
 import Logout from './pages/auth/Logout';
 import Register from './pages/auth/Register';
+import Getbook from './pages/Getbook';
 
 function App() {
   const user= JSON.parse(localStorage.getItem("currentuser"));
@@ -23,6 +24,7 @@ function App() {
           <Route path={routes.GIVENBOOKS} element={<GivenBooks/>}/>
           <Route path={routes.PROFILE} element={<Profile/>}/>
           <Route path={routes.LOGOUT} element={<Logout/>}/>
+          <Route path={routes.GETBOOK} element={<Getbook/>}/>
         </>}
       </Routes>
     </BrowserRouter>

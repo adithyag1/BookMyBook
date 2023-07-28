@@ -11,6 +11,7 @@ function NavBar() {
         <div><Link to={routes.ALLBOOKS}>GetBook</Link></div>
         <div><Link to={routes.PROFILE}>Profile</Link></div>
         <div><Link to={routes.LOGOUT}>Logout</Link></div>
+        <div><Link to={routes.GETBOOK}>GetBook</Link></div>
         {/* 
         <div>{user?.points}</div> */}
     </>

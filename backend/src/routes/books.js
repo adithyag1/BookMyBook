@@ -54,5 +54,22 @@ router.post('/mygivenbooks', async(req, res)=>{
 //     }
 // })
 
+router.post('/getbook', async (req, res) => {
+    const { selected, sendData } = req.body;
+    let books;
+  
+    if (selected === 'bookname') {
+      books = await BookModel.find({ bookname: sendData });
+    }
+    else if (selected === 'author') {
+      books = await BookModel.find({ author: sendData });
+    }
+    else if (selected === 'genre') {
+      const genre = sendData;
+      books = await BookModel.find({ genre: { $in: genre } });
+    }
+  
+    res.json({ books });
+  });  
 
 export {router as bookRouter};

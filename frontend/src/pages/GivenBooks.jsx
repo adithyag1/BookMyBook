@@ -57,13 +57,13 @@ function GivenBooks() {
   return (
   <div>
     {
-      !loading ? ( books.map((book, index)=>(
+      !loading ? books.length>0? ( books.map((book, index)=>(
             <div key={index}>
                 <div>{book.bookname}</div>
                 <div>{book.status}</div>
                
             </div>
-        ))): (<div>Fetching your books...</div>)
+        ))):(<div>You have given no books</div>): (<div>Fetching your books...</div>)
     }
   </div>
   );

@@ -18,6 +18,6 @@ mongoose.connect(`mongodb+srv://adithyag1:${process.env.MONGODB_PASSWORD}@bookmy
         console.log('server started.')
     })
 }).catch((err)=>{
-    console.log('Not connected to mongodb because- ', err);
+    console.log('Not connected to mongodb because ', err);
 })
 
