@@ -2,10 +2,13 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
 import { userRouter } from './routes/users.js';
 import { bookRouter } from './routes/books.js';
 
 const app= express();
+app.use(bodyParser.json({ limit: '25mb' }));
+app.use(bodyParser.urlencoded({ limit: '25mb', extended: true }));
 dotenv.config();
 app.use(express.json());
 app.use(cors());

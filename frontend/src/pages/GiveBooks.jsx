@@ -11,8 +11,7 @@ function GiveBooks() {
   const [edition, setEdition] = useState('');
   const [pages, setPages] = useState(0);
   const [language, setLanguage] = useState('');
-  const [coverBack, setCoverBack] = useState('');
-  const [coverpageImg, setCoverpageImg] = useState('');
+  const [file,setFile] = useState(null);
   const [owner, setOwner] = useState('');
   const [genre, setGenre] = useState([]);
   const [review, setReview] = useState('');
@@ -34,7 +33,15 @@ function GiveBooks() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault();if (!file) {
+      alert('Please select a file.');
+      return;
+    }
+    const reader = new FileReader();
+  reader.readAsArrayBuffer(file);
+  reader.onloadend = async () => {
+    const arrayBuffer = reader.result;
+    const uint8Array = new Uint8Array(arrayBuffer);
     const newBook = {
       bookname,
       author,
@@ -42,12 +49,9 @@ function GiveBooks() {
       edition,
       pages: parseInt(pages),
       language,
-      coverBack,
-      coverpageImg,
+      file: uint8Array,
       genre,
       review,
-      status: 1,
-      passes: 0,
       description,
       owner,
     };
@@ -62,8 +66,10 @@ function GiveBooks() {
       navigate(routes.GIVENBOOKS);
     }
     else{
-      alert('Failed to post your book :(')
+      console.log(response.data.message)
+      alert('Failed to post your book :(');
     }
+  }
   };
   return (
     <>
@@ -111,18 +117,11 @@ function GiveBooks() {
           onChange={(e) => setLanguage(e.target.value)}
         />
         <input
-          type='text'
-          name='coverBack'
+          type='file'
+          name='file'
           required
-          placeholder='coverBack'
-          onChange={(e) => setCoverBack(e.target.value)}
-        />
-        <input
-          type='text'
-          name='coverpageImg'
-          required
-          placeholder='coverpageImg'
-          onChange={(e) => setCoverpageImg(e.target.value)}
+          accept='.pdf, .epub, .mobi'
+          onChange={(e)=> setFile(e.target.files[0])}
         />
         <label>
           Genre:

@@ -25,24 +25,12 @@ const BookSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    coverBack: {
-        type: String,
-        required: true
-    },
-    coverpageImg:{
-        type: String,
-        required: true
-    },
     owner:{
         type: mongoose.Schema.Types.ObjectId,
         required: true
     },
-    status:{
-        type: Number,
-        required: true
-    },
-    passes:{
-        type: Number,
+    file:{
+        type: Buffer,
         required: true
     },
     genre: [{

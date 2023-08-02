@@ -17,7 +17,12 @@ router.post('/givebook', async(req,res)=>{
             res.json({status: 1})
         }
         else{
-            res.json({status: 0});
+            if(!newBook){
+            res.json({status: 0, message:"newBook false"});
+            }
+            if(!user){
+                res.json({status: 0, message:"user false"});
+                }
         }
         
         
